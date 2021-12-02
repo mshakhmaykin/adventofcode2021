@@ -31,13 +31,13 @@ func read_inputs() []int {
 
 func step_1(values []int) {
 	increases := 0
-	previous := 1000000000000000
 
-	for _, num := range values {
-		if num > previous {
-			increases += 1
+	for i, num := range values {
+		if i > 0 {
+			if num > values[i-1] {
+				increases += 1
+			}
 		}
-		previous = num
 	}
 
 	fmt.Println("Total increases", increases)
@@ -49,14 +49,13 @@ func step_2(values []int) {
 	for i := 0; i < len(values)-2; i++ {
 		sum := values[i] + values[i+1] + values[i+2]
 		sums = append(sums, sum)
-	}
-	previous := 10000000000
-	for _, sum := range sums {
-		if sum > previous {
-			increases += 1
+		if i > 0 {
+			if sum > sums[len(sums)-2] {
+				increases += 1
+			}
 		}
-		previous = sum
 	}
+
 	fmt.Println("Sum increases", increases)
 }
 
