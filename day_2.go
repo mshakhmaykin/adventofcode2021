@@ -27,12 +27,12 @@ func read_inputs() map[string]int {
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
-	//scanner.Split(bufio.ScanLines)
 	var inputs = make(map[string]int)
 
 	for scanner.Scan() {
-		direction := strings.Split(scanner.Text(), " ")[0]
-		units, _ := strconv.Atoi(strings.Split(scanner.Text(), " ")[1])
+		line := strings.Split(scanner.Text(), " ")
+		direction := line[0]
+		units, _ := strconv.Atoi(line[1])
 		inputs[direction] += units
 	}
 	if err := scanner.Err(); err != nil {
@@ -60,7 +60,7 @@ func read_inputs_2() []string {
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
-	//scanner.Split(bufio.ScanLines)
+
 	var inputs []string
 
 	for scanner.Scan() {
@@ -82,8 +82,9 @@ func step_1(values map[string]int) {
 func step_2(values []string) {
 	horizontal, depth, aim := 0, 0, 0
 	for _, command := range values {
-		direction := strings.Split(command, " ")[0]
-		units, _ := strconv.Atoi(strings.Split(command, " ")[1])
+		line := strings.Split(command, " ")
+		direction := line[0]
+		units, _ := strconv.Atoi(line[1])
 		switch direction {
 		case "down":
 			aim += units
