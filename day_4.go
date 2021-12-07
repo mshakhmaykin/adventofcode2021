@@ -18,7 +18,7 @@ func read_inputs() ([]int, [][][]int) {
 		drop_extension := strings.Split(base_name, ".")[0] // day_1
 		today_number, _ = strconv.Atoi(strings.Split(drop_extension, "_")[1])
 	}
-	input_file := fmt.Sprintf("inputs/2021_%d_test.in", today_number)
+	input_file := fmt.Sprintf("inputs/2021_%d.in", today_number)
 
 	file, err := os.Open(input_file)
 	if err != nil {
@@ -54,7 +54,7 @@ func read_inputs() ([]int, [][][]int) {
 
 		//fmt.Println(linecounter)
 		if line != "" {
-			//fmt.Println(cardcounter)
+
 			tmp := strings.Fields(line)
 			lineint := []int{}
 			for _, v := range tmp {
@@ -62,15 +62,13 @@ func read_inputs() ([]int, [][][]int) {
 				lineint = append(lineint, n)
 			}
 			lastcard = append(lastcard, lineint)
-			//fmt.Println(lastcard)
+
 		} else {
-			//fmt.Println("cards before", cards)
-			//fmt.Println("lastcard before", lastcard)
+
 			cards = append(cards, lastcard)
-			//fmt.Println(lastcard)
+
 			lastcard = make([][]int, 0)
-			//fmt.Println("lastcard after", lastcard)
-			//fmt.Println("cards after", cards)
+
 			cardcounter += 1
 		}
 	}
@@ -81,13 +79,9 @@ func read_inputs() ([]int, [][][]int) {
 func testcard(card [][]int) bool {
 	for i := 0; i < 5; i++ {
 		if card[i][0] == card[i][1] && card[i][1] == card[i][2] && card[i][2] == card[i][3] && card[i][3] == card[i][4] && card[i][4] == -1 {
-			//fmt.Println("winning here", card[i][0])
 			return true
 		}
 		if card[0][i] == card[1][i] && card[1][i] == card[2][i] && card[2][i] == card[3][i] && card[3][i] == card[4][i] && card[4][i] == -1 {
-			//fmt.Println("winning there", i)
-			//fmt.Println(card[0][i], card[1][i], card[2][i], card[3][i], card[4][i])
-			//fmt.Println(card)
 			return true
 		}
 	}
@@ -111,11 +105,8 @@ func calculatecard(card [][]int, lastnum int) int {
 }
 
 func step_1(drawnnums []int, cards [][][]int) int {
-	//fmt.Println(drawnnums)
-	//fmt.Println(cards[0][0])
-
 	for _, number := range drawnnums {
-		fmt.Println("number", number)
+		//fmt.Println("number", number)
 		for i := 0; i < len(cards); i++ {
 			for j := 0; j < 5; j++ {
 				for k := 0; k < 5; k++ {
