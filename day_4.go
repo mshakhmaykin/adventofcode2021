@@ -74,20 +74,20 @@ func read_inputs() ([]int, [][][]int) {
 			cardcounter += 1
 		}
 	}
-	fmt.Println("cards", cards)
+	//fmt.Println("cards", cards)
 	return drawnnums, cards
 }
 
 func testcard(card [][]int) bool {
 	for i := 0; i < 5; i++ {
 		if card[i][0] == card[i][1] && card[i][1] == card[i][2] && card[i][2] == card[i][3] && card[i][3] == card[i][4] && card[i][4] == -1 {
-			fmt.Println("winning here", card[i][0])
+			//fmt.Println("winning here", card[i][0])
 			return true
 		}
 		if card[0][i] == card[1][i] && card[1][i] == card[2][i] && card[2][i] == card[3][i] && card[3][i] == card[4][i] && card[4][i] == -1 {
-			fmt.Println("winning there", i)
-			fmt.Println(card[0][i], card[1][i], card[2][i], card[3][i], card[4][i])
-			fmt.Println(card)
+			//fmt.Println("winning there", i)
+			//fmt.Println(card[0][i], card[1][i], card[2][i], card[3][i], card[4][i])
+			//fmt.Println(card)
 			return true
 		}
 	}
@@ -121,9 +121,9 @@ func step_1(drawnnums []int, cards [][][]int) int {
 				for k := 0; k < 5; k++ {
 					if cards[i][j][k] == number {
 						cards[i][j][k] = -1
-						fmt.Println(cards[i])
+						//fmt.Println(cards[i])
 						if testcard(cards[i]) {
-							fmt.Println(cards[i], number)
+							//fmt.Println(cards[i], number)
 							return calculatecard(cards[i], number)
 						}
 						//fmt.Println(cards[i][j][k])
